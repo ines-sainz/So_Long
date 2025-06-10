@@ -112,7 +112,7 @@ void	ft_moves(int key, t_game *game)
 	ft_enemy(key, game);
 	game->moves++;
 	write(1, "Moves: ", 7);
-	ft_putnbr(game->moves);
+	ft_putnbr_fd(game->moves, 1);
 	write(1, "\n", 1);
 	game->map[game->x_player][game->y_player] = '0';
 	ft_draw_images(game, game->map[game->x_player][game->y_player],

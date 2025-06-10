@@ -17,7 +17,7 @@ NAME		= so_long
 NAME_BONUS	= so_long_bonus
 
 # Compiler to use
-CC			= gcc
+CC			= cc
 
 # Compiler flags: warnings, errors, extra warnings, include directories, debug info
 CFLAGS		= -Wall -Werror -Wextra -I/src -I/usr/include -Imlx_linux -g3 -I .
@@ -31,13 +31,13 @@ MLX_FLAGS  += -lz
 # Source files for mandatory part
 SRCS		=	ft_so_long.c ft_check_map.c ft_check_caracters.c \
 				ft_draw_map.c ft_moves.c ft_putstr_fd.c \
-				ft_libft2.c main.c
+				ft_add.c main.c
 
 # Source files for bonus part (located in src_bonus directory)
 SRCS_BONUS	=	src_bonus/ft_check_caracters_bonus.c \
 				src_bonus/ft_animation_bonus.c \
 				src_bonus/ft_check_map_bonus.c src_bonus/ft_draw_map_bonus.c \
-				src_bonus/ft_libft2_bonus.c src_bonus/ft_moves_bonus.c \
+				src_bonus/ft_add_bonus.c src_bonus/ft_moves_bonus.c \
 				src_bonus/ft_putstr_fd_bonus.c src_bonus/ft_so_long_bonus.c \
 				src_bonus/main_bonus.c
 

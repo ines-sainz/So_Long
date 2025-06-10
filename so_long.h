@@ -57,14 +57,10 @@ int		ft_check_characters(t_game *game);
 int		ft_check_path(t_game *game);
 void	ft_free_map_copy(t_game *game);
 int		ft_so_long(t_game *game);
-void	ft_print_map(t_game *game);
-size_t	ft_strlen2(const char *s);
-char	*ft_strjoin2(char const *s1, char const s2);
 char	*ft_add(char *s1, char *s2);
 void	ft_draw_map(t_game *game);
 void	ft_draw_images(t_game *game, char c, int i, int j);
 int		ft_destroy_window(t_game *game);
 void	ft_moves(int key, t_game *game);
-void	ft_putnbr(int number);
 
 #endif
