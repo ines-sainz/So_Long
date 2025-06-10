@@ -12,6 +12,18 @@
 
 #include "so_long_bonus.h"
 
+/**
+ * @brief Concatenates two strings into a newly allocated string.
+ * 
+ * This function creates a new string by concatenating the contents of
+ * two input strings. Memory is allocated for the resulting string which
+ * must be freed by the caller.
+ * 
+ * @param s1 The first string to concatenate
+ * @param s2 The second string to concatenate
+ * @return char* Pointer to the newly allocated concatenated string,
+ *               or NULL if memory allocation fails
+ */
 char	*ft_add(char *s1, char *s2)
 {
 	char	*line;
