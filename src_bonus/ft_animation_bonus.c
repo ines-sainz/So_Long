@@ -12,6 +12,19 @@
 
 #include "so_long_bonus.h"
 
+/**
+ * @brief Renders enemy animation frame based on animation counter.
+ * 
+ * This function displays different enemy sprites in sequence to create
+ * an animation effect. The sprite selection is based on the animation
+ * counter value k, cycling through 4 different enemy images.
+ * 
+ * @param game Pointer to the game structure containing display data
+ * @param i Row position on the map grid
+ * @param j Column position on the map grid  
+ * @param k Animation counter determining which sprite to display
+ * @return void
+ */
 void	ft_animation_enemy(t_game *game, int i, int j, int k)
 {
 	if (k < 4000)
@@ -28,6 +41,17 @@ void	ft_animation_enemy(t_game *game, int i, int j, int k)
 			j * 64, i * 64);
 }
 
+/**
+ * @brief Updates and renders all enemy animations on the game map.
+ * 
+ * This function iterates through the entire game map, finds enemy
+ * positions marked with 'X', and calls the animation function for each.
+ * It maintains a static counter for animation timing that cycles from
+ * 0 to 15999.
+ * 
+ * @param game Pointer to the game structure containing map and display data
+ * @return int Always returns 0
+ */
 int	ft_animations(t_game *game)
 {
 	int			i;
