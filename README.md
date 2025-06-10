@@ -1,10 +1,7 @@
-# 🐬 so\_long
+# So Long 🐬
 
-**And thanks for all the fish!**
-
-## 🎮 About the Project
-
-`so_long` is a small 2D game designed as an introduction to graphics programming using the MiniLibX library. It challenges you to implement basic game mechanics, window and image rendering, and map parsing in C. You'll get a taste of building your own game world — where the player must collect all items and find the exit!
+`so_long` is a small 2D game designed as an introduction to graphics programming using the MiniLibX library.
+It challenges to implement basic game mechanics, window and image rendering, and map parsing in C using textures, sprites and basic gameplay elements.
 
 ---
 
@@ -21,55 +18,66 @@ This project aims to introduce you to:
 
 ---
 
-## 📁 What You’ll Implement
+## 🎯 Features
 
-### 🔹 The Game
-
-* Control your player using `W`, `A`, `S`, `D`
-* Collect all the collectibles on the map
-* Find the shortest path to the exit
-* Avoid walking into walls
-* View your movement count in the terminal
-
-### 🖼️ Graphics Management
-
-* A window that displays the game in 2D (top-down or side view)
-* Clean handling of window events (close, minimize, etc.)
-* Exit gracefully when pressing `ESC` or clicking the red cross
-* All images must be drawn using MiniLibX
-
-### 🗘️ The Map
-
-* Built with characters:
-
-  * `1`: Wall
-  * `0`: Empty space
-  * `C`: Collectible
-  * `E`: Exit
-  * `P`: Player start position
-* Must be rectangular and enclosed by walls
-* Must contain at least one `C`, one `E`, and one `P`
-* Must validate the existence of a valid path
-* Example:
-
-  ```
-  111111
-  1P0C01
-  100001
-  1E0001
-  111111
-  ```
+- **Movement**: Use W, A, S, D keys to move the character in 4 directions
+- **Objective**: Collect all items and reach the exit using the shortest possible route
+- **Collision**: Player cannot move through walls
+- **Move Counter**: Display movement count in terminal after each move
+- **2D Perspective**: Bird's eye view or side view gameplay
+- **Clean Window Management**: Proper window handling, minimize, switch windows
+- **Exit Controls**: ESC key or red X button to close window and exit cleanly
+- **Map Validation**: Check for valid path, proper map structure, and error handling
+- **Enemy Patrols**: Player loses when touching enemy patrols
+- **Sprite Animations**: Added sprite animations for enhanced visual experience
+- **On-Screen Counter**: Movement counter displayed directly on screen instead of terminal
 
 ---
 
-## ⚙️ Requirements
+## 🗺️ Map Format
 
-* Language: **C**
-* Use of **MiniLibX** and optionally **libft**
-* Deliverables:
+Maps use `.ber` extension and consist of 5 characters:
+- `0` - Empty space
+- `1` - Wall
+- `C` - Collectible
+- `E` - Exit
+- `P` - Player starting position
 
-  * `Makefile` with rules: `all`, `clean`, `fclean`, `re`, `bonus`
-  * Source files (`*.c`, `*.h`), maps, textures
-* Compilation flags: `-Wall -Wextra -Werror`
-* Must free all heap memory properly
-* Must handle all errors gracefully (output: `Error\n` + message)
+### Map Requirements:
+- Must be rectangular
+- Surrounded by walls
+- Contains exactly one exit and one starting position
+- At least one collectible
+- Must have a valid path to complete the game
+
+### Example Map:
+```
+1111111111111
+10010000000C1
+1000011111001
+1P0011E000001
+1111111111111
+```
+
+## 🎮 Controls
+
+| Key | Action |
+|-----|--------|
+| W/↑ | Move Up |
+| S/↓ | Move Down |
+| A/← | Move Left |
+| D/→ | Move Right |
+| ESC | Exit Game |
+
+
+## ⚠️ Error Handling
+
+The program handles various error cases:
+- Invalid map format
+- Invalid characters in map
+- Map not surrounded by walls
+- No valid path to complete the game
+- Missing required elements (player, exit, collectibles)
+- Duplicate players or exits
+
+All errors display: `Error\n` followed by a descriptive message.
