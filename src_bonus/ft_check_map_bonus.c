@@ -12,6 +12,15 @@
 
 #include "so_long_bonus.h"
 
+/**
+ * @brief Validates that all rows in the map have equal length.
+ * 
+ * This function iterates through each row of the map and compares
+ * their lengths to ensure the map forms a proper rectangle.
+ * 
+ * @param game Pointer to the game structure containing map data
+ * @return int Returns 1 if rows have different lengths, 0 if rectangular
+ */
 int	ft_check_longitude(t_game *game)
 {
 	int	j;
@@ -31,6 +40,15 @@ int	ft_check_longitude(t_game *game)
 	return (0);
 }
 
+/**
+ * @brief Converts map string to matrix and validates format.
+ * 
+ * This function validates the map string format, checks for empty
+ * lines and trailing newlines, then splits it into a 2D array.
+ * 
+ * @param game Pointer to the game structure containing map string
+ * @return int Returns 1 on format error, 0 on success
+ */
 int	ft_map_in_matrix(t_game *game)
 {
 	int	i;
@@ -59,6 +77,17 @@ int	ft_map_in_matrix(t_game *game)
 	return (0);
 }
 
+/**
+ * @brief Reads map file content into a single string.
+ * 
+ * This function reads the entire map file in chunks, concatenates
+ * them into a single string, and then converts it to matrix format.
+ * 
+ * @param game Pointer to the game structure
+ * @param fd File descriptor of the opened map file
+ * @param n_bytes Number of bytes to read per iteration
+ * @return int Returns 1 on error, 0 on success
+ */
 int	ft_open_map(t_game *game, int fd, int n_bytes)
 {
 	char	*temp;
@@ -85,6 +114,15 @@ int	ft_open_map(t_game *game, int fd, int n_bytes)
 	return (0);
 }
 
+/**
+ * @brief Validates that the file has .ber extension.
+ * 
+ * This function checks if the provided filename ends with .ber
+ * extension and is not a directory path ending with the extension.
+ * 
+ * @param argv Filename string to validate
+ * @return int Returns 1 if invalid extension, 0 if valid .ber file
+ */
 int	ft_check_ber(char *argv)
 {
 	char	*extension_map;
@@ -104,6 +142,17 @@ int	ft_check_ber(char *argv)
 	return (1);
 }
 
+/**
+ * @brief Main map validation function that orchestrates all checks.
+ * 
+ * This function performs comprehensive map validation including file
+ * extension, file opening, format validation, size limits, character
+ * validation, and path checking.
+ * 
+ * @param game Pointer to the game structure
+ * @param argv Map filename to validate
+ * @return int Returns 1 on any validation error, 0 if map is valid
+ */
 int	ft_check_map(t_game *game, char *argv)
 {
 	int	fd;
