@@ -30,7 +30,7 @@ MLX_FLAGS  += -lz
 
 # Source files for mandatory part
 SRCS		=	ft_so_long.c ft_check_map.c ft_check_caracters.c \
-				ft_draw_map.c ft_moves.c ft_putstr_fd.c \
+				ft_draw_map.c ft_moves.c \
 				ft_add.c main.c
 
 # Source files for bonus part (located in src_bonus directory)
@@ -38,7 +38,7 @@ SRCS_BONUS	=	src_bonus/ft_check_caracters_bonus.c \
 				src_bonus/ft_animation_bonus.c \
 				src_bonus/ft_check_map_bonus.c src_bonus/ft_draw_map_bonus.c \
 				src_bonus/ft_add_bonus.c src_bonus/ft_moves_bonus.c \
-				src_bonus/ft_putstr_fd_bonus.c src_bonus/ft_so_long_bonus.c \
+				src_bonus/ft_so_long_bonus.c \
 				src_bonus/main_bonus.c
 
 # Object files generated from mandatory source files
