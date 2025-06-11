@@ -12,6 +12,20 @@
 
 #include "so_long_bonus.h"
 
+/**
+ * @brief Draws the appropriate image based on the map character at given
+ *        coordinates.
+ * 
+ * This function renders different game elements (floor, wall, collectibles,
+ * exit, player, or enemy) to the window based on the character value passed.
+ * Each image is positioned at coordinates calculated from the grid position
+ * multiplied by 64 pixels.
+ * 
+ * @param game Pointer to the game structure containing MLX data and images
+ * @param c Character representing the type of element to draw
+ * @param i Row index in the map grid
+ * @param j Column index in the map grid
+ */
 void	ft_draw_images(t_game *game, char c, int i, int j)
 {
 	int	k;
@@ -36,6 +50,16 @@ void	ft_draw_images(t_game *game, char c, int i, int j)
 		ft_animation_enemy(game, i, j, k);
 }
 
+/**
+ * @brief Loads all game images from XPM files into memory.
+ * 
+ * This function loads textures for all game elements including walls, player,
+ * floor, collectibles, exit, and enemy animation frames. It uses the MLX
+ * library to convert XPM files to image data structures.
+ * 
+ * @param game Pointer to the game structure where images will be stored
+ * @return 0 if all images loaded successfully, 1 if any image failed to load
+ */
 int	ft_load_images(t_game *game)
 {
 	int	x;
@@ -58,6 +82,16 @@ int	ft_load_images(t_game *game)
 	return (1);
 }
 
+/**
+ * @brief Renders the complete game map to the window.
+ * 
+ * This function iterates through the entire game map matrix and draws each
+ * element at its corresponding position. It first loads all required images,
+ * then processes each row and column of the map, calling ft_draw_images for
+ * each cell. Finally, it displays the move counter in the window.
+ * 
+ * @param game Pointer to the game structure containing map data and MLX info
+ */
 void	ft_draw_map(t_game *game)
 {
 	int	i;
