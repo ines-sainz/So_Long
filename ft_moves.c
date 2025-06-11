@@ -12,6 +12,17 @@
 
 #include "so_long.h"
 
+/**
+ * @brief Restores exit tile at previous player position
+ * 
+ * Places the exit character back on the map and redraws it when the player
+ * moves away from an exit tile, based on movement direction.
+ * 
+ * @param game Pointer to the game structure containing map and graphics data
+ * @param key Key code indicating movement direction
+ * @param i Current row position of the player
+ * @param j Current column position of the player
+ */
 void	ft_put_exit(t_game *game, int key, int i, int j)
 {
 	if (key == UP)
@@ -40,6 +51,18 @@ void	ft_put_exit(t_game *game, int key, int i, int j)
 	}
 }
 
+/**
+ * @brief Handles special tile interactions during player movement
+ * 
+ * Manages collectible pickup, exit restoration, and win condition checking
+ * when player moves to non-floor tiles.
+ * 
+ * @param game Pointer to the game structure containing game state
+ * @param key Key code indicating movement direction
+ * @param i Row position where player is moving to
+ * @param j Column position where player is moving to
+ * @return 1 if exit was restored, 0 otherwise
+ */
 int	ft_no_floor(t_game *game, int key, int i, int j)
 {
 	if (game->map[i][j] == 'C')
@@ -63,6 +86,15 @@ int	ft_no_floor(t_game *game, int key, int i, int j)
 	return (0);
 }
 
+/**
+ * @brief Executes player movement and updates game state
+ * 
+ * Increments move counter, clears old position, updates player coordinates,
+ * handles tile interactions, and redraws player at new position.
+ * 
+ * @param key Key code indicating movement direction
+ * @param game Pointer to the game structure containing all game data
+ */
 void	ft_moves(int key, t_game *game)
 {
 	game->moves++;
