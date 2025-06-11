@@ -12,6 +12,14 @@
 
 #include "so_long.h"
 
+/**
+ * @brief Frees memory allocated for the main game map
+ * 
+ * Iterates through each row of the map array, frees individual strings,
+ * then frees the array pointer and sets it to NULL.
+ * 
+ * @param game Pointer to the game structure containing the map to free
+ */
 void	ft_free_map(t_game *game)
 {
 	int	i;
@@ -26,6 +34,14 @@ void	ft_free_map(t_game *game)
 	game->map = NULL;
 }
 
+/**
+ * @brief Frees memory allocated for the backup copy of the game map
+ * 
+ * Iterates through each row of the map copy array, frees individual strings,
+ * then frees the array pointer and sets it to NULL.
+ * 
+ * @param game Pointer to the game structure containing the map copy to free
+ */
 void	ft_free_map_copy(t_game *game)
 {
 	int	i;
@@ -40,6 +56,14 @@ void	ft_free_map_copy(t_game *game)
 	game->map_copy = NULL;
 }
 
+/**
+ * @brief Initializes all game structure fields to default values
+ * 
+ * Sets all pointers to NULL, counters to zero, and prepares the game
+ * structure for use with clean initial state.
+ * 
+ * @param game Pointer to the game structure to initialize
+ */
 void	inicialize_structure(t_game *game)
 {
 	game->map = NULL;
@@ -59,6 +83,16 @@ void	inicialize_structure(t_game *game)
 	game->y_player = 0;
 }
 
+/**
+ * @brief Handles error reporting and memory cleanup
+ * 
+ * Prints appropriate error messages based on error code and cleans up
+ * allocated memory before returning error status.
+ * 
+ * @param i Error code indicating the type of error that occurred
+ * @param game Pointer to the game structure for memory cleanup
+ * @return 1 to indicate error status
+ */
 int	ft_error(int i, t_game *game)
 {
 	if (i == 1)
@@ -84,6 +118,16 @@ int	ft_error(int i, t_game *game)
 	return (1);
 }
 
+/**
+ * @brief Main program entry point
+ * 
+ * Validates command line arguments, initializes game structure, performs
+ * map validation, and starts the game if everything is valid.
+ * 
+ * @param argc Number of command line arguments
+ * @param argv Array of command line argument strings
+ * @return 0 on successful execution, 1 on error
+ */
 int	main(int argc, char **argv)
 {
 	t_game	game;
