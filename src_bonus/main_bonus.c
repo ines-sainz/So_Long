@@ -12,6 +12,16 @@
 
 #include "so_long_bonus.h"
 
+/**
+ * @brief Frees the memory allocated for the game map.
+ * 
+ * This function deallocates all memory used by the game map array. It
+ * iterates through each row of the map, frees the individual string
+ * memory, then frees the array of pointers and sets the map pointer
+ * to NULL to prevent dangling references.
+ * 
+ * @param game Pointer to the game structure containing the map
+ */
 void	ft_free_map(t_game *game)
 {
 	int	i;
@@ -26,6 +36,16 @@ void	ft_free_map(t_game *game)
 	game->map = NULL;
 }
 
+/**
+ * @brief Frees the memory allocated for the game map copy.
+ * 
+ * This function deallocates all memory used by the game map copy array,
+ * which is typically used for pathfinding validation. It follows the same
+ * pattern as ft_free_map, freeing each row then the array itself and
+ * setting the pointer to NULL.
+ * 
+ * @param game Pointer to the game structure containing the map copy
+ */
 void	ft_free_map_copy(t_game *game)
 {
 	int	i;
@@ -40,6 +60,16 @@ void	ft_free_map_copy(t_game *game)
 	game->map_copy = NULL;
 }
 
+/**
+ * @brief Initializes all fields of the game structure to default values.
+ * 
+ * This function sets up the initial state of the game structure by
+ * initializing all pointers to NULL, counters to zero, and preparing
+ * the structure for map loading and game initialization. This prevents
+ * undefined behavior from uninitialized variables.
+ * 
+ * @param game Pointer to the game structure to initialize
+ */
 void	inicialize_structure(t_game *game)
 {
 	game->map = NULL;
@@ -64,6 +94,18 @@ void	inicialize_structure(t_game *game)
 	game->y_player = 0;
 }
 
+/**
+ * @brief Handles error messages and cleanup based on error type.
+ * 
+ * This function displays appropriate error messages for different types
+ * of map validation failures and game initialization errors. It also
+ * performs cleanup by freeing allocated memory for maps and temporary
+ * data structures before returning an error code.
+ * 
+ * @param i Error code indicating the type of error that occurred
+ * @param game Pointer to the game structure for cleanup operations
+ * @return Always returns 1 to indicate an error occurred
+ */
 int	ft_error(int i, t_game *game)
 {
 	if (i == 1)
@@ -89,6 +131,18 @@ int	ft_error(int i, t_game *game)
 	return (1);
 }
 
+/**
+ * @brief Main function that validates arguments and starts the game.
+ * 
+ * This function serves as the entry point for the program. It validates
+ * that exactly one argument (the map file) is provided, initializes the
+ * game structure, validates the map file, and starts the game if all
+ * checks pass successfully.
+ * 
+ * @param argc Number of command line arguments
+ * @param argv Array of command line argument strings
+ * @return 0 on successful execution, 1 on error
+ */
 int	main(int argc, char **argv)
 {
 	t_game	game;
