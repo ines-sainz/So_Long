@@ -12,6 +12,16 @@
 
 #include "so_long_bonus.h"
 
+/**
+ * @brief Frees all loaded game images from memory.
+ * 
+ * This function safely destroys all MLX image structures that were loaded
+ * for the game, including walls, floors, collectibles, exit, player, and
+ * enemy animation frames. It checks for NULL pointers before destroying
+ * each image to prevent segmentation faults.
+ * 
+ * @param game Pointer to the game structure containing image pointers
+ */
 void	ft_free_images(t_game *game)
 {
 	if (game->wall != NULL)
@@ -34,6 +44,17 @@ void	ft_free_images(t_game *game)
 		mlx_destroy_image(game->mlx, game->enemy4);
 }
 
+/**
+ * @brief Properly destroys the game window and cleans up all resources.
+ * 
+ * This function handles the complete cleanup process when the game ends.
+ * It calls error handling, destroys the MLX window, frees all images,
+ * destroys the display connection, frees the MLX instance, and exits
+ * the program.
+ * 
+ * @param game Pointer to the game structure containing MLX data
+ * @return Always returns 0 (though function exits before returning)
+ */
 int	ft_destroy_window(t_game *game)
 {
 	ft_error(0, game);
@@ -45,6 +66,18 @@ int	ft_destroy_window(t_game *game)
 	return (0);
 }
 
+/**
+ * @brief Handles keyboard input and player movement validation.
+ * 
+ * This function processes keyboard events and validates movement before
+ * executing it. It checks if the target position is not a wall ('1')
+ * before allowing movement in any direction. It also handles the escape
+ * key for quitting the game.
+ * 
+ * @param key Key code of the pressed key
+ * @param game Pointer to the game structure containing map and player data
+ * @return Always returns 0
+ */
 int	ft_key(int key, t_game *game)
 {
 	if (key == RIGHT && game->map[game->x_player][game->y_player + 1] != '1')
@@ -63,6 +96,17 @@ int	ft_key(int key, t_game *game)
 	return (0);
 }
 
+/**
+ * @brief Initializes the MLX system and starts the game loop.
+ * 
+ * This function sets up the MLX graphics system, validates screen size
+ * compatibility, creates the game window, draws the initial map, and
+ * establishes event hooks for keyboard input and window closing. It then
+ * starts the main game loop with animations.
+ * 
+ * @param game Pointer to the game structure containing all game data
+ * @return 0 on success, error code on failure
+ */
 int	ft_so_long(t_game *game)
 {
 	int	height;
