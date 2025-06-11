@@ -12,6 +12,18 @@
 
 #include "so_long.h"
 
+/**
+ * @brief Performs flood fill algorithm to mark reachable tiles.
+ * 
+ * This recursive function implements a flood fill algorithm starting from
+ * the given coordinates. It marks all reachable non-wall tiles by setting
+ * them to '1' in the map copy, effectively identifying all areas accessible
+ * from the starting position.
+ * 
+ * @param game Pointer to the game structure containing the map copy
+ * @param x Row coordinate for the current flood fill position
+ * @param y Column coordinate for the current flood fill position
+ */
 void	ft_flood_fill(t_game *game, int x, int y)
 {
 	if (game->map_copy[x][y] && game->map_copy[x][y] != '1')
@@ -24,6 +36,17 @@ void	ft_flood_fill(t_game *game, int x, int y)
 	}
 }
 
+/**
+ * @brief Validates that all collectibles and exits are reachable.
+ * 
+ * This function uses flood fill starting from the player position to
+ * determine reachability, then checks if any collectibles ('C') or exits
+ * ('E') remain unmarked. If unreachable items are found, it indicates an
+ * invalid path configuration.
+ * 
+ * @param game Pointer to the game structure containing map data
+ * @return 0 if all items are reachable, error code if path is invalid
+ */
 int	ft_check_path(t_game *game)
 {
 	int	i;
@@ -46,6 +69,20 @@ int	ft_check_path(t_game *game)
 	return (0);
 }
 
+/**
+ * @brief Validates individual map characters and handles game element counts.
+ * 
+ * This function checks if a character is valid for the game map, ensures
+ * border tiles are walls, and manages counters for game elements. It also
+ * validates that there is exactly one player and one exit, storing the
+ * player's position for later use.
+ * 
+ * @param game Pointer to the game structure for element counting
+ * @param c Character to validate from the map
+ * @param i Row index of the character in the map
+ * @param j Column index of the character in the map
+ * @return 0 if character is valid, error code if invalid
+ */
 int	ft_char_organizer(t_game *game, char c, int i, int j)
 {
 	if (c != '1' && c != '0' && c != 'P' && c != 'C' && c != 'E')
@@ -72,6 +109,17 @@ int	ft_char_organizer(t_game *game, char c, int i, int j)
 	return (0);
 }
 
+/**
+ * @brief Validates all characters in the game map and required elements.
+ * 
+ * This function iterates through every character in the map, validating
+ * each one using ft_char_organizer. After processing all characters, it
+ * ensures that the map contains at least one collectible, exactly one
+ * exit, and exactly one player.
+ * 
+ * @param game Pointer to the game structure containing the map to validate
+ * @return 0 if all characters and requirements are valid, 1 on error
+ */
 int	ft_check_characters(t_game *game)
 {
 	int	i;
