@@ -12,6 +12,15 @@
 
 #include "so_long.h"
 
+/**
+ * @brief Cleans up and destroys the game window and resources
+ * 
+ * Properly destroys all MLX resources including window, images, and display,
+ * then frees memory and exits the program.
+ * 
+ * @param game Pointer to the game structure containing MLX resources
+ * @return 0 (never reached due to exit call)
+ */
 int	ft_destroy_window(t_game *game)
 {
 	ft_error(99, game);
@@ -32,6 +41,16 @@ int	ft_destroy_window(t_game *game)
 	return (0);
 }
 
+/**
+ * @brief Handles keyboard input and player movement
+ * 
+ * Validates movement against walls and triggers player movement or game exit
+ * based on the pressed key (arrow keys or ESC).
+ * 
+ * @param key Key code of the pressed key
+ * @param game Pointer to the game structure containing game state
+ * @return 0 on successful key handling
+ */
 int	ft_key(int key, t_game *game)
 {
 	if (key == RIGHT && game->map[game->x_player][game->y_player + 1] != '1')
@@ -50,6 +69,15 @@ int	ft_key(int key, t_game *game)
 	return (0);
 }
 
+/**
+ * @brief Initializes MLX window and starts the game loop
+ * 
+ * Sets up the MLX environment, creates the game window with proper sizing,
+ * draws the map, registers event handlers, and starts the main game loop.
+ * 
+ * @param game Pointer to the game structure containing all game data
+ * @return 0 on successful game execution
+ */
 int	ft_so_long(t_game *game)
 {
 	int	height;
