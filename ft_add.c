@@ -12,6 +12,18 @@
 
 #include "so_long.h"
 
+/**
+ * @brief Concatenates two strings into a newly allocated string.
+ * 
+ * This function creates a new string by concatenating the contents of two
+ * input strings. It allocates memory for the combined length of both strings
+ * plus a null terminator, then copies the characters from both strings
+ * sequentially into the new buffer.
+ * 
+ * @param s1 First string to concatenate
+ * @param s2 Second string to concatenate
+ * @return Pointer to newly allocated concatenated string, or NULL on failure
+ */
 char	*ft_add(char *s1, char *s2)
 {
 	char	*line;
