@@ -12,6 +12,17 @@
 
 #include "so_long.h"
 
+/**
+ * @brief Draws the appropriate image sprite based on map character
+ * 
+ * Maps each character type to its corresponding sprite and renders it at the
+ * specified grid position using 64x64 pixel tiles.
+ * 
+ * @param game Pointer to the game structure containing MLX and image data
+ * @param c Character representing the map element to draw
+ * @param i Row position in the map grid
+ * @param j Column position in the map grid
+ */
 void	ft_draw_images(t_game *game, char c, int i, int j)
 {
 	if (c == '0')
@@ -31,6 +42,15 @@ void	ft_draw_images(t_game *game, char c, int i, int j)
 			j * 64, i * 64);
 }
 
+/**
+ * @brief Loads all game sprites from XPM texture files
+ * 
+ * Initializes all game images by loading XPM files for walls, player, floor,
+ * collectibles, and exit sprites into memory for rendering.
+ * 
+ * @param game Pointer to the game structure to store loaded images
+ * @return 0 if all images loaded successfully, 1 if any loading failed
+ */
 int	ft_load_images(t_game *game)
 {
 	int	x;
@@ -48,6 +68,14 @@ int	ft_load_images(t_game *game)
 	return (1);
 }
 
+/**
+ * @brief Renders the complete game map to the window
+ * 
+ * Loads all necessary sprites and iterates through the entire map matrix,
+ * drawing each tile at its corresponding screen position.
+ * 
+ * @param game Pointer to the game structure containing map and graphics data
+ */
 void	ft_draw_map(t_game *game)
 {
 	int	i;
