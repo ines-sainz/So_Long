@@ -12,6 +12,16 @@
 
 #include "so_long.h"
 
+
+/**
+ * @brief Checks if all rows in the map have the same length (longitude)
+ * 
+ * This function iterates through each row of the map to verify that all rows
+ * have equal length, ensuring a rectangular map format.
+ * 
+ * @param game Pointer to the game structure containing map data
+ * @return 0 if all rows have equal length, 1 if lengths differ
+ */
 int	ft_check_longitude(t_game *game)
 {
 	int	j;
@@ -31,6 +41,16 @@ int	ft_check_longitude(t_game *game)
 	return (0);
 }
 
+/**
+ * @brief Converts map from single line string to 2D matrix format
+ * 
+ * Validates the map string format by checking for empty lines, consecutive
+ * newlines, and proper start/end format. Then splits the string into a 2D
+ * array and creates a backup copy for pathfinding validation.
+ * 
+ * @param game Pointer to the game structure containing map data
+ * @return 0 on success, 1 on failure (invalid format or memory error)
+ */
 int	ft_map_in_matrix(t_game *game)
 {
 	int	i;
@@ -59,6 +79,17 @@ int	ft_map_in_matrix(t_game *game)
 	return (0);
 }
 
+/**
+ * @brief Reads map file content and stores it in the game structure
+ * 
+ * Opens and reads the map file, concatenating all content into a
+ * single string. It converts the string into a 2D matrix.
+ * 
+ * @param game Pointer to the game structure to store map data
+ * @param fd File descriptor of the opened map file
+ * @param n_bytes Number of bytes to read (used as loop condition)
+ * @return 0 on success, 1 on failure (read error or matrix conversion error)
+ */
 int	ft_open_map(t_game *game, int fd, int n_bytes)
 {
 	char	*temp;
@@ -85,6 +116,15 @@ int	ft_open_map(t_game *game, int fd, int n_bytes)
 	return (0);
 }
 
+/**
+ * @brief Validates that the file has a .ber extension
+ * 
+ * Extracts the last 4 characters from the filename and verifies they match
+ * the required ".ber" extension.
+ * 
+ * @param argv String containing the filename to check
+ * @return 0 if valid .ber file, 1 if invalid extension or format
+ */
 int	ft_check_ber(char *argv)
 {
 	char	*extension_map;
@@ -104,6 +144,17 @@ int	ft_check_ber(char *argv)
 	return (1);
 }
 
+/**
+ * @brief Main map validation function that performs all map checks
+ * 
+ * Orchestrates the complete map validation process: validates file extension,
+ * opens and reads the file, checks map dimensions and format, validates
+ * characters, and verifies that a valid path exists through the map.
+ * 
+ * @param game Pointer to the game structure to store validated map data
+ * @param argv String containing the map filename
+ * @return 0 if map is valid, 1 if any validation fails
+ */
 int	ft_check_map(t_game *game, char *argv)
 {
 	int	fd;
